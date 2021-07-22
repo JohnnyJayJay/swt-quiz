@@ -79,7 +79,8 @@
      (case (.-keyCode event)
        13 (next-statement!)
        (87 89) (answer! true)
-       (70 78) (answer! false)))))
+       (70 78) (answer! false)
+       nil))))
 
 (defn ^:export init! []
   (mount-root))
