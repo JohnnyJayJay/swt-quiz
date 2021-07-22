@@ -1,0 +1,266 @@
+f Softwaretechnik befasst sich mit der objektorientierten Programmierung von Altsystemen.
+f Software ist leichter zu ändern als ein physisches Produkt vergleichbarer Komplexität.
+f Software ist schwerer auszuliefern als ein physisches Produkt vergleichbarer Komplexität.
+w Software unterliegt keinem Verschleiß.
+w Werkzeuge können die Einhaltung von Methoden, Verfahren, Standards und Notationen erhöhen.
+f Innerhalb eines Projektes darf jeder Entwickler seinem eigenen Programmierstil folgen, solange er ihn konsequent anwendet.
+f In Java ist Swing die einzige mitgelieferte GUI-Schnittstelle.
+
+VERSIONSKONTROLLE
+w Softwarekonfigurationsverwaltung ist die Disziplin zur Verfolgung und Steuerung der Evolution von Software.
+f CVS (Concurrent Version System) kam historisch vor RCS (Revision Control System).
+f SVN speichert Einbuchungen als Dateisystem-Schnappschüsse.
+w Ein Git-Depot ist ein gerichteter, azyklischer Graph.
+f Jede Git-Einbuchung hat genau eine oder zwei Eltern-Einbuchungen.
+w Bei jedem Einbuchen wird bei Git der Kopf-Zeiger (HEAD) automatisch auf die neu erstellte Einbuchung gesetzt.
+f Um einen neuen Entwicklungszweig anzulegen wird eine neue Einbuchung mit dem Ausgangszustand des neuen Zweiges erzeugt.
+w Git identifiziert Einbuchungen global eindeutig durch einen kryptographischen Streuwert (Hash).
+w SVN identifiziert Einbuchungen global eindeutig durch eine fortlaufende Nummer.
+f Anders als bei Git werden in SVN alle Operationen auf einem (entfernten) Depot/Server durchgeführt.
+f Subversion ist wie Git ein verteiltes Versionierungssystem.
+w Striktes Ausbuchen erfordert ein Einbuchen desselben ausbuchenden Programmierers, bevor ein zweiter Programmierer dasselbe Element strikt ausbuchen kann.
+w Striktes Ausbuchen von Dateien gibt dem Ausbuchenden das exklusive Änderungsrecht an den ausgebuchten Dateien.
+w Ein Versionskontrollsystem mit striktem Ausbuchen erlaubt pro Datei immer nur eine Ausbuchung jener Datei gleichzeitig.
+f Vorwärtsdeltas in einem Konfigurationsverwaltungssystem erlauben den schnellen Zugriff auf die aktuelle Revision.
+w Rückwärtsdeltas speichern die aktuelle Version und die davor durchgeführten Änderungen.
+w Git benötigt weniger Speicherplatz bei der Verwaltung der Versionshistorie als SVN.
+w Entwicklungszweige (branches) und benannte Versionsstände (tags) werden in Subversion als (Verzeichnis-)Kopien im Depot abgelegt und sind auf Namenskonventionen angewiesen.
+f Optimistisches Ausbuchen erspart Verschmelzen beim Zurückschreiben. Beim strikten Ausbuchen ist das nicht der Fall.
+f Git erlaubt das Einbuchen einer Änderung auch ohne Netzwerkverbindung, da es für diesen Vorgang keinen zentralen Server benötigt. Subversion hingegen braucht zum Einbuchen immer eine Netzwerkverbindung zum zentralen Server.
+
+LASTEN-/PFLICHTENHEFT
+w Das Artefakt Lastenheft dient dazu, eine grobe Übersicht über das Vorhaben abzustecken.
+f Das Lastenheft ist eine Verfeinerung des Pflichtenheftes.
+f Das Lastenheft ist ein Ergebnis der Definitionsphase.
+f Funktionale Anforderungen geben die Implementierung vor, indem sie die Interaktionen zwischen dem System und der Systemumgebung beschreiben.
+f Qualitätsanforderungen wie die Benutzbarkeit erhöhen die Systemqualität und gehören zu den funktionalen Anforderungen.
+f Nicht-funktionale Eigenschaften beschreiben, was das Produkt nicht tun sollte.
+w Nicht-funktionale Anforderungen sind sowohl Teil des Pflichtenhefts als auch des Lastenhefts.
+f (Hohe) Performanz ist eine funktionale Anforderung.
+w Sicherheit ist eine nicht-funktionale Anforderung.
+w Datenschutz ist eine nichtfunktionale Anforderung.
+w Ein Pflichtenheft spezifiziert die Anforderungen an eine Software in eindeutiger Weise, so dass sie implementiert werden können.
+w Das Pflichtenheft beschreibt nur, was zu implementieren ist und nicht wie.
+f Die Erhebungstechnik „Anwendungsfälle“ hilft bei der Bestimmung der Systemgrenzen und erfasst viel Domänenwissen.
+f Anwendungsfälle helfen nicht dabei, Grenzen des Softwaresystems zu bestimmen.
+
+UML-DIAGRAMME
+w Attribute können im UML-Klassendiagramm durch Pfeile dargestellt werden.
+f In UML hat eine Methode die Signatur methodenname : Rückgabetyp(Parameterliste).
+w Eine Komposition ist in UML strenger als eine Aggregation, da Teile keine Daseinsberechtigung ohne das Ganze haben.
+w Bei Kompositionen haben Teile keine Daseinsberechtigung ohne das Ganze; dies muss beispielsweise bei Löschoperationen beachtet werden.
+f Um bei Multiplizitäten „beliebig viele“ auszudrücken, verwendet man ∞.
+w UML-Anwendungsfalldiagramme werden während der Planungsphase verwendet, um das von außen sichtbare Verhalten des Systems darzustellen.
+w Ein UML-Anwendungsfalldiagramm modelliert typische Interaktionen des Benutzers mit dem System.
+f Anwendungsfalldiagramme sind dynamische Modelle.
+w Sequenzdiagramme skizzieren einen ganz konkreten Ablauf eines Anwendungsfalls.
+f Im Sequenzdiagramm zeigen Pfeile von dem Objekt weg, auf dem die angegebene Methode aufgerufen wird.
+w In Sequenzdiagrammen können Rückgabewerte an den Rückführungspfeilen angegeben werden.
+w Sequenzdiagramme skizzieren einen ganz konkreten Ablauf eines Anwendungsfalls.
+w UML-Sequenzdiagramme unterstützen Nebenläufigkeit.
+f Bei asynchronen Aufrufen im Sequenzdiagramm wird die Quelle in der Ausführung bis zum Erhalt der Antwort blockiert.
+f Aktivitätsdiagramme unterstützen keine Nebenläufigkeit.
+w In UML-Aktivitätsdiagrammen unterscheidet man zwischen Objekt- und Kontrollflüssen.
+w Zusicherungen in OCL sind UML-Elemente.
+f Nebenläufige Zustandsdiagramme sind echt mächtiger als normale Zustandsdiagramme.
+f Zustandsdiagramme halten immer.
+w Ein Zustandsdiagramm hat nur endlich viele Zustände.
+f Das 
+H in Zustandsdiagrammen mit Gedächtnis steht für Hirn.
+w Jeder Zustand in einem UML-Zustandsdiagramm kann eine entry/exit-Methode angeben.
+w Unter welchen Umständen ein Objekt welche Botschaft entgegen nimmt, spezifiziert man in einem UML-Zustandsdiagramm.
+w Solange sich ein Objekt in einem Zustand befindet, reagiert es im gleichen Kontext immer gleich auf seine Umwelt.
+
+ENTWURF
+w Ein Modul sollte ohne Kenntnis der späteren Nutzung entworfen, implementiert, getestet und überarbeitet werden können.
+w Ein Modul ist eine Menge von Programmelementen, die nach dem Geheimnisprinzip gemeinsam entworfen und geändert werden.
+f Folgt man dem Geheimnis-/Kapselungsprinzip, dann wird bei einer Änderung einer Entwurfsentscheidung auch die zugehörige Schnittstelle geändert.
+f Das Geheimnisprinzip steigert die Widerstandsfähigkeit gegen Sicherheitslücken.
+w Das Geheimnisprinzip besagt, dass Implementierungsdetails hinter einer Schnittstelle verborgen sind.
+w Programmkomponente A benutzt Programmkomponente B genau dann, wenn der korrekte Ablauf von A die Verfügbarkeit einer korrekten Implementierung von B erfordert.
+
+ARCHITEKTURSTILE
+f Bei einer intransparenten Schichtenarchitektur kann eine innere Schicht nur auf direkt benachbarte Schichten zugreifen.
+w Schichtenarchitekturen unterstützen das Testen von Programmen.
+w Ist die Benutztrelation zwischen Modulen zyklenfrei, sind Teillieferungen bei Entwicklungsverzögerungen einzelner Module möglich.
+w Wenn die Benutztrelation zyklenfrei ist, heißt sie Benutzthierarchie.
+f Eine Fließband-Architektur in Software kann nur auf Parallelrechnern ausgeführt werden.
+f Bei einer Schichtenarchitektur mit drei übereinander liegenden Schichten kann die mittlere Schicht auf die Dienste der oberen und der unteren Schicht zugreifen.
+
+OBJEKTMODELLIERUNG
+f In Java muss eine Klasse, die eine Schnittstelle implementiert, alle in der Schnittstelle vorgegebenen Methoden implementieren.
+f Auf ein privates Attribut eines Exemplars einer Klasse kann nur das Exemplar selber zugreifen.
+w Das Überladen einer Methode entsteht durch die Existenz einer zweiten Methode gleichen Namens (in derselben oder einer Unterklasse), aber unterschiedlicher Argumenttypen.
+w Wenn eine Klasse eine abstrakte Methode besitzt, ist sie auch selbst abstrakt.
+w Kovarianz beschreibt die Variation von Parametertypen parallel zur Vererbungsrichtung.
+f Bei der Implementierungsvererbung kann die Implementierung einer Methode mit einer neuen Signatur versehen werden.
+f Schnittstellen können Implementierungsdetails vererben.
+f In Java besteht eine Methodensignatur aus dem Namen und dem Rückgabetyp.
+f Implementierungsvererbung ist die Voraussetzung für Signaturvererbung.
+f Haben zwei Klassen gleichnamige Methoden, sollten diese in eine Schnittstelle ausgelagert werden.
+w Bei Gleichheit 0. Stufe handelt sich um dasselbe Objekt oder die Objekte sind identisch.
+f Bei einer seichten Kopie eines Objekts werden alle Attribute kopiert, ausschließlich der Referenzen auf andere Objekte.
+f Eine Klasse B wird erst dann zu einer Unterklasse einer Klasse A, wenn gezeigt werden kann, dass jedes Exemplar von A auch als ein Exemplar von B gesehen werden kann.
+f static class MyClass {} deklariert in Java eine statische Klasse namens „MyClass“.
+
+LINGUISTISCHE ANALYSE
+w Die Rolle ACT bei der linguistischen Analyse kann von Verben und Substantiven eingenommen werden.
+w Die Rolle „instrumentum“ wird im UML-Diagramm als Klasse ohne Assoziation zu der Klasse des zugehörigen „agens“ modelliert.
+f Die Rollenkombination DON, PAT und RECP wird in einem UML-Diagramm zu drei Klassen „donor“, „patiens“ und „recipiens“ sowie einer dreistelligen Beziehung zwischen diesen Klassen, die die Übergabe des „patiens“ vom „donor“ an den „recipiens“ modelliert.
+w Die Rollenkombination AG, ACT und INSTR wird in einem UML-Klassendiagramm mit den beiden Klassen „agens“ und „instrumentum“ modelliert sowie einer Methode „actus“ beim „agens“ mit einem Parameter vom Typ „instrumentum“.
+w Das Verb „haben“ steht bei der linguistischen Analyse von Spezifikationstexten oft für eine Aggregation im Modell.
+f Thematische Rollen erfassen den Inhalt von Sätzen über dessen grammatikalische Struktur. Das Subjekt des Satzes wird zu einer Klasse mit dem Prädikat als Methode und dem Objekt des Satzes als Methodenparameter.
+f Der Satz „Ein Bäcker übergibt die Pizza an eine Servicekraft.“ wird im UML-Diagramm als dreistellige Relation mit den Rollen Bäcker DON, Pizza RECP und Servicekraft HAB modelliert.
+f Im Satz „Ein Bäcker übergibt die Pizza an eine Servicekraft.“ muss „übergibt an“ mit der Rolle „actus“ versehen werden.
+w Im Satz „Ein Bäcker knetet Teig mit den Händen.“ erhalten die „Hände“ die Rolle „instrumentum“.
+f Im Satz „Ein Bäcker backt Pizza im Ofen.“ erhält das Wort „Ofen“ die Rolle „locus“.
+f Im Satz „Das Servieren von Pizza übernehmen die Service-Kräfte“ wird „übernehmen“ mit der Rolle „actus“ versehen.
+w Die Sätze „Die Pizzeria Il Calcolatore ist in Karlsruhe.“ und „In Karlsruhe gibt es eine Pizzeria Il Calcolatore.“ sind bezüglich der linguistischen Analyse äquivalent.
+
+ENTWURFSMUSTER
+w Das Adaptermuster lässt Klassen zusammenarbeiten, die wegen inkompatibler Schnittstellen ansonsten dazu nicht in der Lage wären.
+w Das Entwurfsmuster Strategie bietet die Möglichkeit, eine Klasse mit einer von mehreren möglichen Verhaltensweisen zu konfigurieren.
+w Das Schlüsselwort final in Java erlaubt es, eine Schablonenmethode so zu definieren, dass Unterklassen den Algorithmus der Schablonenmethode nicht mehr verändern können, sondern nur noch die Implementierung der Einschubmethoden überschreiben bzw. implementieren dürfen.
+w Eine Fassade bietet eine vereinfachte Schnittstelle zu einer Menge von Schnittstellen eines Subsystems.
+w Eine Fassade bietet eine einheitliche Schnittstelle zu den Schnittstellen eines Subsystems und erleichtert so dessen Benutzung.
+w Die beiden Entwurfsmuster Fassade und Adapter können jeweils mehrere Klassen benutzen. Der primäre Einsatzzweck des Entwurfsmusters Fassade ist es jedoch, die Schnittstelle zu vereinfachen, während der Zweck des Entwurfsmusters Adapter darin besteht, eine andere Schnittstelle für eine gegebene Klasse anzubieten.
+f Beim Kompositum sollten so viele Methoden wie möglich in den Blättern deklariert werden, da in der Komponente keine sinnvolle Implementierung angegeben werden kann.
+f Das Entwurfsmuster Kompositum erlaubt nur das Erstellen von baumartigen Strukturen, allgemeinere Graphen können nicht modelliert werden.
+w Das Strategiemuster erfüllt das Geheimnisprinzip, indem es Datenstrukturen, die in einer konkreten Strategie enthalten sind, vor dem Klienten verbirgt.
+f Klienten können mithilfe des Strategiemusters Sammlungen von Objekten und einzelne Objekte auf die gleiche Weise behandeln.
+f Klienten können mithilfe des Iterator-Musters Sammlungen von Objekten und einzelne Objekte auf die gleiche Weise behandeln.
+w Das Muster Strategie kapselt austauschbares Verhalten und verwendet Delegierung, um zu entscheiden, welches Verhalten verwendet wird.
+f In Java wird das Entwurfsmuster Null-Objekt durch null realisiert.
+w Verwendet man das Entwurfsmuster Kompositum, so bietet sich das Entwurfsmuster Iterator an, um die Elemente der Bestandshierarchie in einer bestimmten Reihenfolge zu durchlaufen.
+w Der Adapter ermöglicht das Verwenden von Klassen, die nicht mit der erwarteten Schnittstelle kompatibel sind. Der Dekorierer hingegen lässt die Schnittstelle unverändert.
+f Ein Adapter umhüllt immer nur eine einzige Klasse.
+f Iterator und Besucher gehören zu den Entkopplungsmustern.
+f Das Entwurfsmuster Iterator ist den Variantenmustern zuzuordnen.
+w Das Entwurfsmuster Iterator ermöglicht polymorphe Iteration.
+f Bei Entkopplungsmustern werden Gemeinsamkeiten von verwandten Einheiten zentralisiert, d. h. herausgezogen und an einer einzigen Stelle beschrieben.
+f Fassade und Adapter gehören zu den Bequemlichkeitsmustern.
+f Eine Komponente kann immer nur mit einem einzigen Dekorierer versehen werden.
+f Die Fabrikmethode sorgt dafür, dass nur eine einzige Instanz einer Klasse fabriziert wird.
+w Findet man im Klassendiagramm eine Assoziation, an deren beiden Enden 1..* steht, so eignet sich eine Fabrikmethode, um Konsistenz beim Erzeugen der ersten Instanzen sicherzustellen.
+f Sowohl beim Fließband- als auch beim Auftraggeber-/Auftragnehmer-Entwurfsmuster gibt es eine zentrale Aufgabenverteilung.
+w Das parallele Muster Auftraggeber/Auftragnehmer (master/worker) wird verwendet, wenn es mehrere Aufgaben gibt, die unabhängig voneinander bearbeitet werden können.
+w Beim Zustandsmuster gibt es einen definierten Startzustand.
+w Sowohl beim Zustandsmuster als auch beim Strategiemuster wird das Verhalten an den konkreten Zustand bzw. die konkrete Strategie delegiert.
+f Sowohl beim Zustandsmuster als auch beim Strategiemuster bestimmt ein Zustand bzw. eine Strategie den nachfolgenden Zustand bzw. Strategie.
+w Das Hinzufügen einer neuen konkreten Strategie erfordert keine Änderung existierender konkreter Strategien.
+f Beim Zustandsmuster muss die Implementierung einer Methode in einem Zustand explizit berücksichtigen, in welchem Zustand sich der Zustandsautomat befindet.
+w Eine Fassade kann dadurch implementiert werden, dass Methoden eines Subsystems mit Standardparameterwerten aufgerufen werden.
+f Wird beim Beobachter-Muster nachträglich ein neuer Beobachter hinzugefügt, muss der Quelltext des beobachteten Subjekts angepasst werden.
+f Ein Beobachter kann immer nur ein Subjekt beobachten, da sonst beim Aktualisierungsrundruf nicht klar ist, welches Subjekt sich geändert hat.
+f Eine Schablonenmethode ist immer auch eine Fabrikmethode.
+f Dekorierer fügen zu einem Objekt neue Funktionalität hinzu, indem sie das Objekt selber ändern.
+f Wird das Muster Dekorierer benutzt, darf die Schnittstelle des dekorierten Subjekts nicht geändert werden.
+w Der extrinsische Zustand beim Fliegengewicht wird nicht im konkreten Fliegengewicht selber gespeichert.
+f Beim Zugriff auf ein spezifisches Fliegengewicht erzeugt der Klient das Fliegengewicht, falls es noch nicht existiert.
+f Ob auf die getInstance()-Methode des Einzelstücks gleichzeitig von verschiedenen Klienten aufgerufen werden kann oder nicht, spielt keine Rolle.
+w Ein Aufbewahrer im Entwurfsmuster Memento kann beliebig viele Mementos verwalten. Für die Restauration im Falle eines Reset ist er allerdings nicht verantwortlich.
+f Ein Prototyp im Entwurfsmuster Prototyp muss herkömmlich erstellt werden, ohne von einem anderen Objekt geklont zu werden.
+f Das Prototypmuster wird verwendet, wenn es von einer Klasse nur eine einzige Instanz geben darf und diese Instanz den Klienten an einer bekannten Stelle zugänglich gemacht werden soll.
+w Bei dem Entwurfsmuster Befehl kennt der Empfänger den Befehl nicht, jedoch der Befehl den Empfänger.
+f Bei der Verwendung eines Null-Objektes fallen eventuell mehr Null-Absicherungen an als ohne.
+
+PARALELLITÄT
+f Moderne Betriebssysteme können eine Verklemmung in einem laufenden Programm erkennen und darauf reagieren.
+w Ein Kontrollfaden besitzt in Java stets einen eigenen Keller sowie einen eigenen Programmzähler.
+f Ein Algorithmus der in vier Teile aufgeteilt ist, welche parallel abgearbeitet werden können, benötigt nur noch ein Viertel der Ausführungszeit, die der Algorithmus sequentiell implementiert benötigen würde.
+f Jeder Kontrollfaden eines Prozesses besitzt ein eigenes Code- und Datensegment im Hauptspeicher.
+w Eine Verklemmung ist eine Blockade, die durch eine zyklische Abhängigkeit von Fäden auf gemeinsame Ressourcen hervorgerufen wird.
+w Bei einer Verklemmung warten zwei oder mehr Fäden aufeinander, aber keiner kann weiterarbeiten.
+f Mit Hilfe des Schlüsselworts synchronized vor Klassenvariablen lassen sich diese in Java vor gleichzeitigen parallelen Zugriffen und somit vor Wettläufen schützen.
+f In Java kann jedes Objekt, insbesondere auch jeder primitive Datentyp, als Monitor verwendet werden.
+f Bei heutigen CPUs brauchen Cache-Effekte wie zum Beispiel Cache-Misses nicht mehr beachtet werden.
+w Nicht jeder Algorithmus lässt sich durch Parallelisierung beschleunigen.
+f Ein Thread sollte in Java mit run() gestartet werden.
+f Die Anweisung i++ ist atomar.
+
+TESTEN UND PRÜFEN
+f Dynamische Testverfahren können die Korrektheit des Codes belegen.
+f Kontrollflussorientierte Tests und datenflussorientierte Tests gehören zur statischen Analyse von Programmen.
+f Kontrollflussorientierte Tests gehören zu den statischen Testverfahren.
+w Durchsichten sind auf Code und Testfälle anwendbar.
+w Zusicherungen (z. B. mit dem Schlüsselwort assert in Java) werden zur Laufzeit eines Programms ausgeführt.
+w Bei der mehrfachen Bedingungsüberdeckung ist die Größe der minimalen Testfallmenge unabhängig davon, ob Kurzauswertung vorgenommen wird oder nicht.
+f Die Anweisungsüberdeckung subsumiert die einfache Bedingungsüberdeckung.
+f Die Zweigüberdeckung subsumiert die minimal-mehrfache Bedingungsüberdeckung.
+w Die Pfadüberdeckung subsumiert die Anweisungsüberdeckung.
+f Die einfache Bedingungsüberdeckung fordert, dass die Kombinationen der atomaren Bedingungen mit allen möglichen Permutationen der Wahrheitswerte Wahr und Falsch belegt werden.
+w Ein Stresstest testet das Verhalten des Systems beim Überschreiten der definierten Grenzen.
+f Stresstests testen das Verhalten eines Systems bzw. einer Komponente innerhalb des erlaubten Grenzbereichs.
+f JUnit führt Testfälle in alphabetischer Reihenfolge aus.
+f Mit JUnit kann man funktionale und nicht-funktionale Anforderungen testen.
+w Fügt man einer Testklasse eine Methode mit der Annotation @BeforeClass hinzu, dann wird diese in einem JUnit-Durchlauf genau einmal ausgeführt.
+w In Testfällen werden tatsächliche Ergebnisse der getesteten Methoden mit erwarteten Ergebnissen verglichen.
+w JUnit erlaubt das selektive Ausführen einzelner Tests einer Testklasse.
+f JUnit ist für Regressionstests ungeeignet.
+f Wenn in einem JUnit-Testfall eine Ausnahme auftritt, wird dieser dadurch als fehlgeschlagen dargestellt.
+f JUnit führt Testfälle, die aus unterschiedlichen Testklassen stammen, parallel aus.
+w Im Quelltext eines Programms verwendet man das Java-Schlüsselwort assert, in JUnit-Tests hingegen die datentypspezifischen Methoden der Klasse Assert.
+f JUnit-Tests und Java-Zusicherungen lassen sich zum Testen von Programmen nicht miteinander kombinieren.
+f Eine unvollständige oder fehlerhafte Umsetzung einer Anforderung fällt in die Fehlerklasse der Anforderungsfehler.
+w Inspektionen sind statische Testverfahren.
+w Bei einer Inspektion durch mehrere Inspektoren untersucht jeder Inspektor das Software-Dokument für sich alleine nach Fehlern.
+w Eine Inspektion ist anwendbar auf alle Softwaredokumente: Pflichtenhefte, Spezifikationen, Entwürfe, Code und Testfälle.
+w Ein konsistenter Programmierstil erleichtert die Lesbarkeit und vereinfacht so Inspektionen.
+w Bei einer Inspektion durch mehrere Inspektoren untersucht jeder Inspektor das Software-Dokument für sich alleine nach Fehlern.
+f Die Zweigüberdeckung gehört zu den Black-Box-Testverfahren.
+f Ein Defekt verursacht einen Irrtum.
+w Wurde eine Methode verifiziert, so braucht sie nicht mehr getestet zu werden.
+w Ein Korrektheitsbeweis macht das Testen der „bewiesenen“ Methode mit JUnit überflüssig.
+f Ob eine Sammlung von JUnit-Tests zur Anweisungsüberdeckung ausreicht, muss man manuell bestimmen – z. B. mithilfe eines Kontrollflussgraphen.
+f Die Qualität der Abnahmetests verringert sich, wenn ein eigenständiges Wartungsteam eingesetzt wird.
+f Testen garantiert die Fehlerfreiheit eines Programms.
+w Mithilfe von Komponententests kann man in der Regel keine Fehler im Pflichtenheft finden.
+w Der Abnahmetest ist die Grundlage für die bindende Erklärung der Annahme des Produkts.
+
+PROZESSMODELLE
+f Im Prozessmodell „Synchronisiere und Stabilisiere“ ist die Priorisierung nach Funktionen nicht möglich.
+f Beim Prozessmodell „Synchronisiere und Stabilisiere“ folgt auf das Ende der Entwicklungsphase eine Stabilisierungsphase, in der die Integration und die Komponententests durchgeführt werden.
+f Ein Nachteil im Prozessmodell „Synchronisiere und Stabilisiere“ ist, dass Rückmeldungen erst sehr spät einfließen können.
+w Bei agilen Softwareentwicklungsprozessen beschränkt man die Vorausplanung auf das Nötigste und plant inkrementell.
+f Bei der agilen Softwareentwicklung gibt es ebenfalls ein Pflichtenheft zum Nachschlagen von Anforderungen.
+f Der Integrationstest im V-Modell ist der abschließende Test des Auftragnehmers in einer realistischen Umgebung ohne den Kunden.
+w Das V-Modell XT besteht aus den vier Submodellen Projektmanagement, Qualitätssicherung, Konfigurationsmanagement und Systemerstellung.
+w In der Implementierungsphase des Wasserfallmodells finden die Umsetzung der Spezifikation in korrekte, lauffähige Programme und deren Dokumentation statt.
+w In der letzten Phase des Wasserfallmodells finden Einsatz und Wartung statt.
+w Das Prototypmodell eignet sich für Systeme, die keine vollständige Spezifikation haben und bei denen diese Spezifikation ohne explorative Entwicklung bzw. Experimente nicht erstellt werden kann.
+w Die Durchführbarkeitsuntersuchung ist Teil der Planungsphase des Wasserfallmodells.
+w Das iterative Modell als Erweiterung der Prototypenidee eignet sich dann, wenn zumindest Teile der Funktionalität klar definiert und Funktionalitäten dem Produkt Schritt für Schritt hinzugefügt werden können.
+f Im Prozessmodell „Prototyp“ wird der Prototyp iterativ entwickelt und nach der Testphase produktiv eingesetzt und gewartet.
+f Beim Prozessmodell „Scrum“ enthält die Aufgabenliste (engl. sprint backlog) die Produktanforderungen und eine Liste aller Projektarbeiten.
+f Der „Scrum Master“ legt die Anforderungen an das Produkt fest sowie dessen Auslieferungstermin.
+f Im Wasserfallmodell ist das Pflichtenheft ein Ergebnisartefakt der Planungsphase.
+f Im Wasserfallmodell folgt die Planungsphase auf die Definitionsphase.
+w In der Planungsphase des Wasserfallmodells entstehen die Durchführbarkeitsstudie, das Lastenheft, die Projektkalkulation und der Projektplan.
+f Die letzte Phase des klassischen Wasserfallmodells ist „Testen und Abnahme“.
+w Im Wasserfall-Entwicklungsprozess steigen die Kosten für Änderungen exponentiell mit der Zeit.
+f Beim Prototyp-Prozessmodell wird aus einem Prototypen Stück für Stück das finale Softwareprodukt entwickelt.
+w Das Fehlerlogbuch und der Regelkatalog beim selbstkontrollierten Programmieren werden von jedem Programmierer selbst geführt und auf seine eigenen Bedürfnisse angepasst und gepflegt.
+w Beim selbstkontrollierten Programmieren dient das Zeitlogbuch dazu, die Selbsteinschätzung des Entwicklers zu verbessern.
+
+EXTREME PROGRAMMING
+f Beim „Extreme Programming“ entscheiden die Entwickler, welche Priorität die Funktionalitäten eines Produkts haben.
+f Beim „Extreme Programming“ sind Codeinspektionen Teil der normalen Arbeitszeit und finden im wöchentlichen Rhythmus statt.
+w Beim „Extreme Programming“ werden Akzeptanztests vom Kunden spezifiziert und müssen spätestens bei der Auslieferung „grün“ sein, d. h. sie dürfen keine Fehler melden.
+w Wird „Extreme Programming“ (XP) bei großen Projekten eingesetzt, ist (trotz XP) eine Anforderungs- und Entwurfsphase erforderlich.
+w „Extreme Programming“ bezieht den Kunden stärker in den Entwicklungsprozess ein als das Wasserfallmodell.
+f Aufgrund der permanenten gegenseitigen Kontrolle ist die Paarprogrammierung gegenüber der Einzelprogrammierung mit Inspektionen klar im Vorteil, was das Verhältnis Kosten zu Nutzen angeht.
+w Bei der Paarprogrammierung gibt es pro Entwicklerpaar nur eine Tastatur und eine Maus.
+f Bei der Paarprogrammierung schreibt der Fahrer keine Komponententests, da der Navigator den Code ständig auf Fehler überprüft.
+w Dank kollektivem Codebesitz darf jeder Entwickler Änderungen am gesamten Produkt vornehmen, z. B. bei Umstrukturierungen (Refactoring).
+w Bei der testgetriebenen Entwicklung dienen die Tests unter anderem zur Schnittstellendefinition.
+f Dank testgetriebener Entwicklung, kontinuierlicher Integration und Regressionstests sind agil entwickelte Programmkomponenten fehlerfrei.
+
+AUFWANDSSCHÄTZUNG
+f Das einzige Ziel der Softwaretechnik ist es, die Kosten der Erstellung von Software zu senken.
+w Die Entwicklungskosten eines Softwaresystems bestehen zum größten Teil aus Personalkosten.
+w Für ein Softwareentwicklungsprojekt gilt die Faustregel: Der Aufwand für Wartung und Pflege ist typischerweise um einen Faktor von 2 bis 4 größer als der Entwicklungsaufwand.
+w COCOMO II betrachtet neben den multiplikativen Kostenfaktoren auch Skalierungsfaktoren für die Zusammenarbeit im Entwicklungsteam.
+f Die Multiplikatormethode ermöglicht eine Aufwandsschätzung ohne umfangreiche empirische Datensammlung.
+f Die „Analogiemethode“ bezeichnet das Abschätzen des Gesamtaufwandes auf der Basis der im Projekt bereits abgeschlossenen Phasen.
+f Im Teufelsquadrat werden Qualität, Quantität, Entwicklungsdauer und Produktivität aufgetragen, um die Kosten zu schätzen.
+w Bei eigenständiger Wartungsorganisation ist eine gleichmäßige Auslastung der Mitarbeiter schwer zu erreichen.
