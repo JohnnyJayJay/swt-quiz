@@ -29,7 +29,7 @@
 
 (defn answer! [choice]
   (let [current-correct (:correct @current-statement)]
-    (swap! answer-correct? (fn [prev] (if (some? prev) prev (= choice (:correct @current-statement)))))))
+    (swap! answer-correct? (fn [prev] (if (some? prev) prev (= choice current-correct))))))
 
 ;; -------------------------
 ;; Views
