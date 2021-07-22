@@ -1,7 +1,8 @@
 (ns swt-multiple-choice.core
   (:require
    [reagent.core :as r]
-   [reagent.dom :as d]))
+   [reagent.dom :as d]
+   [swt-multiple-choice.comments :as c]))
 
 ;; -------------------------
 ;; State
@@ -46,6 +47,10 @@
      " "
      [button "Weiter (⏎)" "orange" next-statement! false]]))
 
+(defn clippy-comment [answer]
+  [:pre
+   (c/clippy-says (rand-nth (c/comments answer)))])
+
 (defn statement []
   (let [{:keys [text correct]} @current-statement
         answer @answer-correct?]
@@ -53,11 +58,12 @@
      [:p text]
    [buttons]
    (when (some? answer)
-     [:p
-      {:style {:color (if answer "green" "red")}}
-      "Die Aussage ist " [:strong (if correct "wahr" "falsch") "."]])]))
-
-;"Deine Antwort war " (if answer "richtig ✅" "falsch ❌")
+     [:div
+      [:p
+       {:style {:color (if answer "green" "red")}}
+       "Die Aussage ist " [:strong (if correct "wahr" "falsch") "."]]
+      (when (< (rand) c/comment-chance)
+        [clippy-comment answer])])]))
 
 (defn home-page []
   [:div
