@@ -28,40 +28,40 @@
       (.then #(do (reset! statements (parse-statements %)) (next-statement!)))))
 
 (defn answer! [choice]
-  (reset! answer-correct? (= choice (:correct @current-statement))))
+  (let [current-correct (:correct @current-statement)]
+    (swap! answer-correct? (fn [prev] (if (some? prev) prev (= choice (:correct @current-statement)))))))
 
 ;; -------------------------
 ;; Views
 
-(defn button [text color on-click]
-  [:input {:type "button" :value text :style {:color color} :on-click on-click}])
+(defn button [text color on-click disabled?]
+  [:input {:type "button" :value text :style {:color color} :on-click on-click :disabled disabled?}])
 
 (defn buttons []
-  [:div
-   [button "Wahr" "green" #(answer! true)]
-   " "
-   [button "Falsch" "red" #(answer! false)]
-   " "
-   [button "Weiter" "gray" next-statement!]])
+  (let [answered? (some? @answer-correct?)]
+    [:div
+     [button "Wahr (w)" (if answered? "grey" "mediumspringgreen") #(answer! true) answered?]
+     " "
+     [button "Falsch (f)" (if answered? "grey" "mediumorchid") #(answer! false) answered?]
+     " "
+     [button "Weiter (⏎)" "orange" next-statement! false]]))
 
 (defn statement []
   (let [{:keys [text correct]} @current-statement
         answer @answer-correct?]
     [:div
-     [:p
-      text
-      (when (some? answer)
-        [:div
-         [:br]
-         "Die Aussage ist " [:strong {:style {:color (if correct "green" "red")}} (if correct "wahr" "falsch")] "."])]
+     [:p text]
    [buttons]
    (when (some? answer)
      [:p
-      "Deine Antwort war " (if answer "richtig ✅" "falsch ❌")])]))
+      {:style {:color (if answer "green" "red")}}
+      "Die Aussage ist " [:strong (if correct "wahr" "falsch") "."]])]))
+
+;"Deine Antwort war " (if answer "richtig ✅" "falsch ❌")
 
 (defn home-page []
   [:div
-   [:h2 "SWT Multiple Choice Fragen"]
+   [:h2 "SWT - Wahr oder Falsch?"]
    (if @statements
      [statement]
      [:em "Die Aussagen werden geladen, bitte warten..."])])
@@ -77,9 +77,9 @@
    "keydown"
    (fn [event]
      (case (.-keyCode event)
-       13 (next-statement!)
-       (87 89) (answer! true)
-       (70 78) (answer! false)
+       (13 32) (next-statement!)
+       (49 87 89) (answer! true)
+       (50 70 78) (answer! false)
        nil))))
 
 (defn ^:export init! []
