@@ -41,11 +41,11 @@
 (defn buttons []
   (let [answered? (some? @answer-correct?)]
     [:div
-     [button "Wahr (w)" (if answered? "grey" "mediumspringgreen") #(answer! true) answered?]
+     [button "Wahr (w)" (if answered? "grey" "#0F9B8E") #(answer! true) answered?]
      " "
      [button "Falsch (f)" (if answered? "grey" "mediumorchid") #(answer! false) answered?]
      " "
-     [button "Weiter (⏎)" "orange" next-statement! false]]))
+     [button "Weiter (⏎)" "royalblue" next-statement! false]]))
 
 (defn clippy-comment [answer]
   [:pre
