@@ -36,7 +36,7 @@
 ;; Views
 
 (defn button [text color on-click disabled?]
-  [:input {:type "button" :value text :style {:color color} :on-click on-click :disabled disabled?}])
+  [:input {:type "button" :value text :style {:color color :font-size "large"} :on-click on-click :disabled disabled?}])
 
 (defn buttons []
   (let [answered? (some? @answer-correct?)]
