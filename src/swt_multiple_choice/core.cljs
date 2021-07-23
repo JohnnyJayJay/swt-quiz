@@ -9,12 +9,12 @@
 
 (def statements (r/atom nil))
 
-(def current-statement (r/atom nil))
+(def current-statements (r/atom nil))
 
 (def answer-correct? (r/atom nil))
 
 (defn next-statement! []
-  (reset! current-statement (rand-nth @statements))
+  (swap! current-statements #(or (next %) (shuffle @statements)))
   (reset! answer-correct? nil))
 
 (defn parse-statements [string]
@@ -29,7 +29,7 @@
       (.then #(do (reset! statements (parse-statements %)) (next-statement!)))))
 
 (defn answer! [choice]
-  (let [current-correct (:correct @current-statement)]
+  (let [current-correct (-> @current-statements first :correct)]
     (swap! answer-correct? (fn [prev] (if (some? prev) prev (= choice current-correct))))))
 
 ;; -------------------------
@@ -52,7 +52,7 @@
    (c/clippy-says (rand-nth (c/comments answer)))])
 
 (defn statement []
-  (let [{:keys [text correct]} @current-statement
+  (let [[{:keys [text correct]}] @current-statements
         answer @answer-correct?]
     [:div
      [:p text]
