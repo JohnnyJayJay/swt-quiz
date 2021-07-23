@@ -1,4 +1,10 @@
 
+# swt-quiz
+
+Simples Wahr-Falsch-Quiz für Softwaretechnik I am KIT. 
+
+[Besucht die Website um zu spielen](https://swt.is-webscale.club) 
+
 ### Development mode
 ```
 npm install
